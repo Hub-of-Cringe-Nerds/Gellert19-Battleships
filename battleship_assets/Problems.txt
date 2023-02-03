@@ -1,0 +1,4 @@
+1. When entering numbers larger than 9 Program errors out
+2. When entering letters Program errors out
+3. Program doesn't tell you when you have destroyed a ship
+4. 
