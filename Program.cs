@@ -18,13 +18,48 @@ namespace Battleships
 
         private static void GetPosition(ref int Row, ref int Column)
         {
+            bool valid_col = false, valid_row = false;
+
             Console.WriteLine();
 
-            Console.Write("Please enter column: ");
-            Column = int.Parse(Console.ReadLine()!);
+            while (valid_col == false)
+            {
+                Console.Write("Please enter column: ");
+                try
+                {
+                    Column = int.Parse(Console.ReadLine()!);
+                }
+                catch (System.Exception)
+                {
+                    Column = int.Parse(Console.ReadLine()!);
+                }
+                
 
-            Console.Write("Please enter row: ");
-            Row = int.Parse(Console.ReadLine()!);
+                if (Column >= 0 && Column <= 9)
+                {
+                    valid_col = true;
+                }
+            }
+
+            while (valid_row == false)
+            {
+                Console.Write("Please enter row: ");
+                try
+                {
+                    Row = int.Parse(Console.ReadLine()!);
+                }
+                catch (System.Exception)
+                {
+                    Row = int.Parse(Console.ReadLine()!);
+                }
+                
+
+                if (Row >= 0 && Row <= 9)
+                {
+                    valid_row = true;
+                }
+            }
+
 
             Console.WriteLine();
         }
@@ -282,7 +317,7 @@ namespace Battleships
 
             Ships[3].Name = "Destroyer";
             Ships[3].Size = 3;
-            
+
             Ships[4].Name = "Patrol Boat";
             Ships[4].Size = 2;
         }
