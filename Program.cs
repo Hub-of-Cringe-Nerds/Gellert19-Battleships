@@ -14,7 +14,7 @@ namespace Battleships
             public int Size;
         }
 
-        const string TestGame = @"C:\Users\golde\OneDrive\Desktop\Coding\VS Projects\Battleships\battleship_assets\testships.txt";
+        const string TestGame = @"battleship_assets\testships.txt";
 
         private static void GetPosition(ref int Row, ref int Column)
         {
