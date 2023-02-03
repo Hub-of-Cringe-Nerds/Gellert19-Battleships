@@ -8,22 +8,24 @@ namespace Battleships
 {
     class Program
     {
+        const string TestGame = @"battleship_assets\testships.txt";
+
         public struct TShip
         {
             public string Name;
             public int Size;
         }
 
-        const string TestGame = @"battleship_assets\testships.txt";
-
         private static void GetPosition(ref int Row, ref int Column)
         {
             Console.WriteLine();
+
             Console.Write("Please enter column: ");
             Column = int.Parse(Console.ReadLine()!);
 
             Console.Write("Please enter row: ");
             Row = int.Parse(Console.ReadLine()!);
+
             Console.WriteLine();
         }
 
@@ -110,6 +112,7 @@ namespace Battleships
                 }
 
                 Console.WriteLine("Computer placing the " + Ships[index].Name);
+
                 PlaceShip(ref Board, Ships[index], Row, Column, Orientation);
             }
         }
@@ -165,6 +168,7 @@ namespace Battleships
                     }
                 }
             }
+
             return true;
         }
 
@@ -180,6 +184,7 @@ namespace Battleships
                     }
                 }
             }
+
             return true;
         }
 
@@ -268,12 +273,16 @@ namespace Battleships
         {
             Ships[0].Name = "Aircraft Carrier";
             Ships[0].Size = 5;
+
             Ships[1].Name = "Battleship";
             Ships[1].Size = 4;
+
             Ships[2].Name = "Submarine";
             Ships[2].Size = 3;
+
             Ships[3].Name = "Destroyer";
             Ships[3].Size = 3;
+            
             Ships[4].Name = "Patrol Boat";
             Ships[4].Size = 2;
         }
