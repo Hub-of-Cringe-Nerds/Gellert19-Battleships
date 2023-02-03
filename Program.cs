@@ -21,6 +21,7 @@ namespace Battleships
             Console.WriteLine();
             Console.Write("Please enter column: ");
             Column = int.Parse(Console.ReadLine()!);
+
             Console.Write("Please enter row: ");
             Row = int.Parse(Console.ReadLine()!);
             Console.WriteLine();
@@ -30,7 +31,9 @@ namespace Battleships
         {
             int Row = 0;
             int Column = 0;
+
             GetPosition(ref Row, ref Column);
+
             if (Board[Row, Column] == 'm' || Board[Row, Column] == 'h')
             {
                 Console.WriteLine("Sorry, you have already shot at the square (" + Column + "," + Row + "). Please try again.");
@@ -62,6 +65,7 @@ namespace Battleships
         {
             string Line = "";
             StreamReader BoardFile = new StreamReader(TestGame);
+
             for (int Row = 0; Row < 10; Row++)
             {
                 Line = BoardFile.ReadLine()!;
@@ -70,6 +74,7 @@ namespace Battleships
                     Board[Row, Column] = Line[Column]!;
                 }
             }
+
             BoardFile.Close();
         }
 
@@ -81,14 +86,17 @@ namespace Battleships
             int Row = 0;
             int Column = 0;
             int HorV = 0;
+
             for (int index = 0; index < Ships.Length; index++)
             {
                 Valid = false;
+
                 while (Valid == false)
                 {
                     Row = RandomNumber.Next(0, 10);
                     Column = RandomNumber.Next(0, 10);
                     HorV = RandomNumber.Next(0, 2);
+
                     if (HorV == 0)
                     {
                         Orientation = 'v';
@@ -97,8 +105,10 @@ namespace Battleships
                     {
                         Orientation = 'h';
                     }
+
                     Valid = ValidPlacement(Board, Ships[index], Row, Column, Orientation);
                 }
+
                 Console.WriteLine("Computer placing the " + Ships[index].Name);
                 PlaceShip(ref Board, Ships[index], Row, Column, Orientation);
             }
@@ -179,14 +189,18 @@ namespace Battleships
             Console.WriteLine("The board looks like this: ");
             Console.WriteLine();
             Console.Write(" ");
+
             for (int Column = 0; Column < 10; Column++)
             {
                 Console.Write(" " + Column + "  ");
             }
+
             Console.WriteLine();
+
             for (int Row = 0; Row < 10; Row++)
             {
                 Console.Write(Row + " ");
+
                 for (int Column = 0; Column < 10; Column++)
                 {
                     if (Board[Row, Column] == '-')
@@ -206,6 +220,7 @@ namespace Battleships
                         Console.Write(" | ");
                     }
                 }
+
                 Console.WriteLine();
             }
         }
@@ -223,20 +238,24 @@ namespace Battleships
         private static int GetMenuChoice()
         {
             int Choice = 0;
+
             Console.Write("Please enter your choice: ");
             Choice = int.Parse(Console.ReadLine()!);
             Console.WriteLine();
+
             return Choice;
         }
 
         private static void PlayGame(ref char[,] Board, ref TShip[] Ships)
         {
             bool GameWon = false;
+
             while (GameWon == false)
             {
                 OutputBoard(Board);
                 MakeMove(ref Board, ref Ships);
                 GameWon = CheckIfWon(Board);
+
                 if (GameWon == true)
                 {
                     Console.WriteLine("All ships sunk!");
@@ -264,17 +283,21 @@ namespace Battleships
             TShip[] Ships = new TShip[5];
             char[,] Board = new char[10, 10];
             int MenuOption = 0;
+
             while (MenuOption != 9)
             {
                 InitialiseBoard(ref Board);
                 InitialiseShips(ref Ships);
+
                 OutputMenu();
                 MenuOption = GetMenuChoice();
+
                 if (MenuOption == 1)
                 {
                     RandomiseShips(ref Board, Ships);
                     PlayGame(ref Board, ref Ships);
                 }
+
                 if (MenuOption == 2)
                 {
                     LoadGame(TestGame, ref Board);
