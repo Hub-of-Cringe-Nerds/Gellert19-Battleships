@@ -229,11 +229,10 @@ namespace Battleships
         }
 
         //TODO IsShipsSunk
-        public static bool IsShipsSunk()
-        {
+        //public static bool IsShipsSunk()
+        //{
 
-            return false;
-        }
+        //}
 
         private static void OutputBoard(char[,] Board)
         {
