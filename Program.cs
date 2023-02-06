@@ -14,6 +14,7 @@ namespace Battleships
         {
             public string Name;
             public int Size;
+            public bool Sunk;
         }
 
         private static void GetPosition(ref int Row, ref int Column)
@@ -31,9 +32,11 @@ namespace Battleships
                 }
                 catch (System.Exception)
                 {
+                    Console.WriteLine("Please enter a number between 0 and 9.");
+                    Console.Write("Please enter column: ");
                     Column = int.Parse(Console.ReadLine()!);
                 }
-                
+
 
                 if (Column >= 0 && Column <= 9)
                 {
@@ -50,9 +53,11 @@ namespace Battleships
                 }
                 catch (System.Exception)
                 {
+                    Console.WriteLine("Please enter a number between 0 and 9.");
+                    Console.Write("Please enter row: ");
                     Row = int.Parse(Console.ReadLine()!);
                 }
-                
+
 
                 if (Row >= 0 && Row <= 9)
                 {
@@ -223,6 +228,13 @@ namespace Battleships
             return true;
         }
 
+//TODO IsShipsSunk
+        public static bool IsShipsSunk()
+        {
+
+            return false;
+        }
+
         private static void OutputBoard(char[,] Board)
         {
             Console.WriteLine();
@@ -308,18 +320,23 @@ namespace Battleships
         {
             Ships[0].Name = "Aircraft Carrier";
             Ships[0].Size = 5;
+            Ships[0].Sunk = false;
 
             Ships[1].Name = "Battleship";
             Ships[1].Size = 4;
+            Ships[1].Sunk = false;
 
             Ships[2].Name = "Submarine";
             Ships[2].Size = 3;
+            Ships[2].Sunk = false;
 
             Ships[3].Name = "Destroyer";
             Ships[3].Size = 3;
+            Ships[3].Sunk = false;
 
             Ships[4].Name = "Patrol Boat";
             Ships[4].Size = 2;
+            Ships[4].Sunk = false;
         }
 
         static void Main(string[] args)
