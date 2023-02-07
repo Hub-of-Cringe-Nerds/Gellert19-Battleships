@@ -234,7 +234,17 @@ namespace Battleships
 
             foreach (var ident in Board)
             {
-                
+                int i = 0;
+                i++;
+
+                if(ident == name)
+                {
+                    Sunk = true;
+                }
+                else
+                {
+                    Sunk = false;
+                }
             }
 
             return Sunk;
