@@ -8,6 +8,8 @@ namespace Battleships
 {
     class Program
     {
+        const string TestGame = @"battleship_assets\testships.txt";
+
         public struct TShip
         {
             public string Name;
@@ -15,16 +17,55 @@ namespace Battleships
             public bool Sunk;
         }
 
-        const string TestGame = @"C:\Users\golde\OneDrive\Desktop\Coding\VS Projects\Battleships\battleship_assets\testships.txt";
-
         private static void GetPosition(ref int Row, ref int Column)
         {
-            Console.WriteLine();
-            Console.Write("Please enter column: ");
-            Column = int.Parse(Console.ReadLine()!);
+            bool valid_col = false, valid_row = false;
 
-            Console.Write("Please enter row: ");
-            Row = int.Parse(Console.ReadLine()!);
+            Console.WriteLine();
+
+            while (valid_col == false)
+            {
+                Console.Write("Please enter column: ");
+                try
+                {
+                    Column = int.Parse(Console.ReadLine()!);
+                }
+                catch (System.Exception)
+                {
+                    Console.WriteLine("Please enter a number between 0 and 9.");
+                    Console.Write("Please enter column: ");
+                    Column = int.Parse(Console.ReadLine()!);
+                }
+
+
+                if (Column >= 0 && Column <= 9)
+                {
+                    valid_col = true;
+                }
+            }
+
+            while (valid_row == false)
+            {
+                Console.Write("Please enter row: ");
+                try
+                {
+                    Row = int.Parse(Console.ReadLine()!);
+                }
+                catch (System.Exception)
+                {
+                    Console.WriteLine("Please enter a number between 0 and 9.");
+                    Console.Write("Please enter row: ");
+                    Row = int.Parse(Console.ReadLine()!);
+                }
+
+
+                if (Row >= 0 && Row <= 9)
+                {
+                    valid_row = true;
+                }
+            }
+
+
             Console.WriteLine();
         }
 
@@ -111,6 +152,7 @@ namespace Battleships
                 }
 
                 Console.WriteLine("Computer placing the " + Ships[index].Name);
+
                 PlaceShip(ref Board, Ships[index], Row, Column, Orientation);
             }
         }
@@ -166,6 +208,7 @@ namespace Battleships
                     }
                 }
             }
+
             return true;
         }
 
@@ -181,8 +224,15 @@ namespace Battleships
                     }
                 }
             }
+
             return true;
         }
+
+        //TODO IsShipsSunk
+        //public static bool IsShipsSunk()
+        //{
+
+        //}
 
         private static void OutputBoard(char[,] Board)
         {
