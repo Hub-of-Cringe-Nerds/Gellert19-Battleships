@@ -228,11 +228,17 @@ namespace Battleships
             return true;
         }
 
-        //TODO IsShipsSunk
-        //public static bool IsShipsSunk()
-        //{
+        public static bool IsShipsSunk(char name, char[,] Board)
+        {
+            bool Sunk = false;
 
-        //}
+            foreach (var ident in Board)
+            {
+                
+            }
+
+            return Sunk;
+        }
 
         private static void OutputBoard(char[,] Board)
         {
@@ -300,6 +306,22 @@ namespace Battleships
         private static void PlayGame(ref char[,] Board, ref TShip[] Ships)
         {
             bool GameWon = false;
+
+            foreach (var ship in Ships)
+            {
+                int i = 0;
+                i++;
+
+                if (!Ships[i].Sunk)
+                {
+                    if(IsShipsSunk(Ships[i].Name[0], Board) == true)
+                    {
+                        Console.WriteLine("You have sunk my battleship!");
+                        Ships[i].Sunk = true;
+                    }
+                }
+            }
+
 
             while (GameWon == false)
             {
