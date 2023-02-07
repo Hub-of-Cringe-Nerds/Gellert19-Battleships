@@ -12,6 +12,7 @@ namespace Battleships
         {
             public string Name;
             public int Size;
+            public bool Sunk;
         }
 
         const string TestGame = @"C:\Users\golde\OneDrive\Desktop\Coding\VS Projects\Battleships\battleship_assets\testships.txt";
@@ -268,14 +269,23 @@ namespace Battleships
         {
             Ships[0].Name = "Aircraft Carrier";
             Ships[0].Size = 5;
+            Ships[0].Sunk = false;
+
             Ships[1].Name = "Battleship";
             Ships[1].Size = 4;
+            Ships[1].Sunk = false;
+
             Ships[2].Name = "Submarine";
             Ships[2].Size = 3;
+            Ships[2].Sunk = false;
+
             Ships[3].Name = "Destroyer";
             Ships[3].Size = 3;
+            Ships[3].Sunk = false;
+
             Ships[4].Name = "Patrol Boat";
             Ships[4].Size = 2;
+            Ships[4].Sunk = false;
         }
 
         static void Main(string[] args)
