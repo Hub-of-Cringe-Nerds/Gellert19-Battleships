@@ -87,7 +87,14 @@ namespace Battleships
             }
             else
             {
-                Console.WriteLine("Hit at (" + Column + "," + Row + ").");
+                for(int i = 0; i < Ships.Length; i++)
+                {
+                    if(Ships[i].Name[0] == Board[Row, Column])
+                    {
+                        Console.WriteLine("Hit " +  Ships[i].Name + " at " + "(" + Column + "," + Row + ")" );
+                    }
+                }
+                
                 Board[Row, Column] = 'h';
             }
         }
@@ -390,7 +397,7 @@ namespace Battleships
                     PlayGame(ref Board, ref Ships);
                 }
 
-                if (MenuOption == 2)
+                else if (MenuOption == 2)
                 {
                     LoadGame(TestGame, ref Board);
                     PlayGame(ref Board, ref Ships);
